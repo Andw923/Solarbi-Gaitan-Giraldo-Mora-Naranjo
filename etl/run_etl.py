@@ -35,7 +35,6 @@ def build_daily(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def main() -> None:
-    # Lee variables desde .env en la raíz del proyecto; las variables del sistema tienen prioridad.
     load_dotenv(ROOT / ".env")
     dsn = os.environ.get("DATABASE_URL")
     if not dsn:

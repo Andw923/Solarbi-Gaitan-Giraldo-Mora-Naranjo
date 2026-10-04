@@ -36,12 +36,12 @@ Se aplican tres reglas, en este orden y de modo que cada fila rechazada se cuent
 
 | Concepto | Filas |
 |---|---|
-| Filas leídas (Bronze) | [ ] |
-| Rechazadas por datos faltantes | [ ] |
-| Rechazadas por duplicados | [ ] |
-| Rechazadas por rango inválido | [ ] |
-| **Filas válidas (Silver)** | [ ] |
-| **Porcentaje de datos válidos** | [ ] % |
+| Filas leídas (Bronze) | 871 |
+| Rechazadas por datos faltantes | 15 |
+| Rechazadas por duplicados | 7 |
+| Rechazadas por rango inválido | 25 |
+| **Filas válidas (Silver)** | **824** |
+| **Porcentaje de datos válidos** | **94,60** % |
 
 Resultado: `data/silver/telemetria_clean.csv`.
 
@@ -60,8 +60,6 @@ DATABASE_URL=postgresql://postgres.REF_DEL_PROYECTO:CLAVE@HOST_DEL_POOLER:5432/p
 ```
 
 También puedes usar las variables `PGHOST`, `PGPORT`, `PGDATABASE`, `PGUSER` y `PGPASSWORD`. Ejecuta el ETL con un único comando:
-
-<!-- PEGAR AQUÍ, SIN CAMBIOS, EL RESTO DEL PASO 3 DEL COMPAÑERO (desde el comando del ETL en adelante) -->
 
 ### Configuración de la conexión (elegir una opción)
 
@@ -105,8 +103,8 @@ La carga usa `INSERT … ON CONFLICT DO UPDATE`, así que repetirla no duplica d
 
 | Ejecución | `silver.lectura_5min` | `dwh.fact_energia_dia` |
 |---|---|---|
-| 1.ª | [ ] | [ ] |
-| 2.ª | [ ] | [ ] |
+| 1.ª | 824 | 3 |
+| 2.ª | 824 | 3 |
 
 ### Programación diaria a medianoche (propuesta, no implementada)
 
@@ -147,18 +145,16 @@ Ahorro COP = [Energía kWh] * 'Tarifa COP kWh'[Tarifa COP kWh Value]
 
 **Fuente de la tarifa:** EPM, "Tarifas y costo de energía eléctrica, mercado regulado", [mes y año], [categoría usada], [valor] $/kWh. Consultado el [fecha]. Fuente: epm.com.co → Clientes y usuarios → Energía → Tarifas de energía.
 
-<!-- PEGAR AQUÍ, SIN CAMBIOS, TODA LA SECCIÓN DE GRAFANA DEL COMPAÑERO (Paso 5). El dashboard exportado está en grafana/dashboard_solarbi.json -->
-
 ## Quién hizo qué
 
 | Parte | Responsable |
 |---|---|
-| Simulador y datos Bronze | [Andrew Gaitán Giraldo] |
+| Simulador y datos Bronze | [Andrew Gaitán Giraldo - Juan Diego Naranjo] |
 | Reglas de calidad y reporte (Silver) | [Andrew Gaitán Giraldo] |
-| Carga a PostgreSQL y scripts SQL (Gold) | [ ] |
+| Carga a PostgreSQL y scripts SQL (Gold) | [Juan Diego Naranjo ] |
 | Dashboard de Power BI y fuente de la tarifa | [Andrew Gaitán Giraldo] |
-| Dashboard de Grafana | [ ] |
-| README y PDF de la consulta | [Andrew Gaitán Giraldo - Juan Diego Naranjo Mora] |
+| Dashboard de Grafana | [Juan Diego Naranjo ] |
+| README y PDF de la consulta | [Andrew Gaitán Giraldo - Juan Diego Naranjo] |
 
 Este repositorio es la base de los siguientes trabajos del proyecto durante el semestre.
 
