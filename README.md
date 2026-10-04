@@ -33,3 +33,11 @@ Expresión cron para ejecutar a medianoche:
 ```cron
 0 0 * * * cd /ruta/al/Solarbi-Gaitan-Mora && /ruta/al/python etl/run_etl.py
 ```
+
+## Paso 5: Grafana
+
+El dashboard está en `grafana/dashboard_solarbi.json`. En Grafana OSS, agrega una fuente de datos **PostgreSQL** y copia los datos de **Supabase → Connect → Session pooler**: host y puerto del pooler, base `postgres`, usuario `postgres.<REF_DEL_PROYECTO>` y la contraseña actual. Configura SSL en modo `require` y usa **Save & test**.
+
+Luego importa `grafana/dashboard_solarbi.json` desde **Dashboards → New → Import** y selecciona esa fuente PostgreSQL cuando Grafana lo solicite. El tablero contiene la variable `dispositivo`, cuatro indicadores (cobertura, energía total, lecturas válidas y potencia pico), una serie temporal de irradiancia y potencia con `$__timeFilter(ts)`, energía diaria y calidad diaria. El indicador de calidad usa umbrales. El rango inicial cubre las fechas de los datos de ejemplo (5–7 de octubre de 2026); se puede cambiar desde el selector de tiempo.
+
+Después de importar y comprobarlo en Grafana, pueden exportar desde **Dashboard → Export → Export as code** y guardar el JSON descargado en el mismo archivo del repositorio. La fuente de datos guarda su contraseña en Grafana; el JSON del dashboard solo conserva una referencia a esa fuente.
